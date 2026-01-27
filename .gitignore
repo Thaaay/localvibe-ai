@@ -1,0 +1,16 @@
+
+.env
+*.env
+
+
+node_modules/
+dist/
+.bun/
+
+
+*.log
+.docker/
+
+
+.vscode/
+.DS_Store
