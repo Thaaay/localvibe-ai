@@ -1,4 +1,5 @@
 LocalVibe AI 🌍✨
+
 LocalVibe AI is a full-stack application that uses Artificial Intelligence to analyze the "vibe" and infrastructure of neighborhoods around the world. The project integrates real geographic data with large-scale language models (LLM) to provide instant urban insights.
 
 🛠️ Technology Stack
