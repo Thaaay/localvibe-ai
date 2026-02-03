@@ -1,88 +1,56 @@
-# 📍 LocalVibe AI
-> **Urban insight powered by LLMs.** > An intelligent dashboard that analyzes neighborhood vibes using real-time data from Google Places and processing via Llama 3 on Groq Cloud.
+# LocalVibe AI 🌍✨
 
-![LocalVibe Banner](https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&q=80&w=1200&h=400)
+O **LocalVibe AI** é uma aplicação Fullstack que utiliza Inteligência Artificial para analisar a "vibe" e a infraestrutura de bairros ao redor do mundo. O projeto integra dados geográficos reais com modelos de linguagem de larga escala (LLM) para fornecer insights urbanos instantâneos.
 
----
+## 🛠️ Stack Tecnológica
 
-## Project Vision
-LocalVibe AI was developed to solve the "where to live/visit" dilemma. By combining raw geolocation data with the reasoning capabilities of Large Language Models (LLMs), it transforms a simple list of bars and parks into a nuanced "Vibe Score".
+- **Frontend:** React.js, Tailwind CSS, Lucide React, Leaflet (Mapas).
+- **Backend:** Elysia.js (Framework de alta performance para Bun).
+- **Runtime:** Bun (Focado em velocidade e eficiência).
+- **IA:** Groq Cloud (Modelo Llama 3.3-70b) para análise urbana.
+- **Geocoding:** TomTom Search API.
+- **Infraestrutura:** Docker & Docker Compose.
 
-## 🚀 Tech Stack
+## 🏗️ Arquitetura e Decisões Técnicas
 
-### Frontend
-- **React 18** + **Vite** (Ultra-fast HMR)
-- **Tailwind CSS v4** (Modern utility-first styling)
-- **Leaflet.js** (Interactive mapping)
-- **i18next** (Full Internationalization: PT/EN)
-- **Lucide React** (Consistent iconography)
+Durante o desenvolvimento, priorizei a **resiliência** e a **performance**:
 
-### Backend
-- **Bun** (Fastest JavaScript runtime)
-- **ElysiaJS** (High-performance web framework)
-- **Groq Cloud API** (Llama-3.3-70b-versatile model)
-- **Google Places API** (Point of Interest source)
-
-### Infrastructure
-- **Docker** & **Docker Compose** (Containerized environment)
-- **Fedora Linux** (Optimized development host)
-
----
-
-## 🏗️ Architecture
+1. **Elysia + Bun:** Escolhido pela baixíssima latência no processamento de requisições e tipagem nativa com TypeScript.
+2. **Tratamento de Erros:** Implementação de lógica *fail-fast* no backend para validar coordenadas geográficas antes de processar chamadas de IA, economizando tokens e tempo de resposta.
+3. **Resiliência de Rede:** Configuração customizada de DNS no Docker para garantir estabilidade em ambientes Linux (Fedora/RHEL), resolvendo gargalos comuns de resolução de nomes em containers.
+4. **Normalização de Dados:** Mapeamento de esquemas proprietários (TomTom `lon` vs Leaflet `lng`) garantindo integridade na renderização do mapa.
 
 
 
-1. **Client**: User searches for a neighborhood and chooses a language.
-2. **Backend**: Fetches POIs from **Google Places API**.
-3. **AI Layer**: Sends POIs and neighborhood names to **Groq**. The model analyzes the data and generates a structured JSON response (Vibe, Scores, Highlights).
-4. **Photo Proxy**: Backend acts as a secure proxy to fetch Google photos without exposing API keys to the browser.
-5. **Dashboard**: Frontend renders a Glassmorphic UI with animated progress bars and interactive maps.
+## 🚀 Como Executar
 
----
+### Pré-requisitos
+- Docker & Docker Compose instalados.
+- Chaves de API (TomTom e Groq).
 
-## 🛠️ Getting Started
-
-### Prerequisites
-- [Docker](https://www.docker.com/) & [Docker Compose](https://docs.docker.com/compose/)
-- Google Cloud API Key (Places API enabled)
-- Groq Cloud API Key
-
-### Installation
-
-1. **Clone the repository**
+### Instalação
+1. Clone o repositório:
    ```bash
-   git clone [https://github.com/your-username/localvibe-ai.git](https://github.com/your-username/localvibe-ai.git)
-   cd localvibe-ai
-Configure Environment Variables Create a .env file in the root directory:
+   git clone [https://github.com/seu-usuario/localvibe-ai.git](https://github.com/seu-usuario/localvibe-ai.git)
+Configure o arquivo .env na pasta /backend:
 
 Snippet de código
 
-GROQ_API_KEY=gsk_your_key_here
-GOOGLE_MAPS_API_KEY=AIzaSy_your_key_here
-Launch with Docker
+TOMTOM_API_KEY=sua_chave_aqui
+GROQ_API_KEY=sua_chave_aqui
+Inicie os containers:
 
 Bash
 
 docker compose up --build
-Access the App
+Acesse o frontend em http://localhost:5173.
 
-Frontend: http://localhost:5173
+Desenvolvido por Thaynara - Systems Development Graduate.
 
-Backend API: http://localhost:3000
 
-🛡️ Key Features
-Vibe Score: Automated ratings for Safety, Cost of Living, Nightlife, and Culture.
+---
 
-Photo Privacy: Secure image loading through an internal proxy.
 
-Multilingual Support: Real-time toggle between Portuguese and English, including AI-translated insights.
 
-Glassmorphism UI: High-end modern design with blur effects and dark mode.
 
-Interactive Radar: Real-time POI display with star ratings.
 
-📄 License
-Distributed under the MIT License. See LICENSE for more information.
-
-Developed with ❤️ on Fedora Linux.
