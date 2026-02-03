@@ -54,6 +54,6 @@ Desenvolvido por Thaynara - Systems Development Graduate.
 
 <img width="1719" height="893" alt="Screenshot_20260203_115511" src="https://github.com/user-attachments/assets/a0381fba-d626-463a-90a4-d485e6d9eabe" />
 
-<img width="1719" height="893" alt="Screenshot_20260203_115511-1" src="https://github.com/user-attachments/assets/8e00346f-496c-46e0-8aed-4d1e45cdcd45" />
+
 
 
