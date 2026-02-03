@@ -1,51 +1,41 @@
-# LocalVibe AI 🌍✨
+LocalVibe AI 🌍✨
+LocalVibe AI is a full-stack application that uses Artificial Intelligence to analyze the "vibe" and infrastructure of neighborhoods around the world. The project integrates real geographic data with large-scale language models (LLM) to provide instant urban insights.
 
-O **LocalVibe AI** é uma aplicação Fullstack que utiliza Inteligência Artificial para analisar a "vibe" e a infraestrutura de bairros ao redor do mundo. O projeto integra dados geográficos reais com modelos de linguagem de larga escala (LLM) para fornecer insights urbanos instantâneos.
+🛠️ Technology Stack
+Frontend: React.js, Tailwind CSS, Lucide React, Leaflet (Maps).
+Backend: Elysia.js (High-performance framework for Bun).
+Runtime: Bun (Focused on speed and efficiency).
+AI: Groq Cloud (Llama 3.3-70b model) for urban analysis.
+Geocoding: TomTom Search API.
+Infrastructure: Docker & Docker Compose.
 
-## 🛠️ Stack Tecnológica
+🏗️ Architecture and Technical Decisions
+During development, I prioritized resilience and performance:
 
-- **Frontend:** React.js, Tailwind CSS, Lucide React, Leaflet (Mapas).
-- **Backend:** Elysia.js (Framework de alta performance para Bun).
-- **Runtime:** Bun (Focado em velocidade e eficiência).
-- **IA:** Groq Cloud (Modelo Llama 3.3-70b) para análise urbana.
-- **Geocoding:** TomTom Search API.
-- **Infraestrutura:** Docker & Docker Compose.
+Elysia + Bun: Chosen for its very low latency in request processing and native typing with TypeScript.
+Error Handling: Implementation of fail-fast logic in the backend to validate geographic coordinates before processing AI calls, saving tokens and response time.
+Network Resilience: Custom DNS configuration in Docker to ensure stability in Linux environments (Fedora/RHEL), resolving common name resolution bottlenecks in containers.
+Data Normalization: Mapping of proprietary schemas (TomTom lon vs Leaflet lng) ensuring integrity in map rendering.
 
-## 🏗️ Arquitetura e Decisões Técnicas
+🚀 How to Run
+Prerequisites
+Docker & Docker Compose installed.
+API keys (TomTom and Groq).
 
-Durante o desenvolvimento, priorizei a **resiliência** e a **performance**:
+Installation
+Clone the repository:
+git clone [https://github.com/your-username/localvibe-ai.git](https://github.com/your-username/localvibe-ai.git)
+Configure the .env file in the /backend folder:
 
-1. **Elysia + Bun:** Escolhido pela baixíssima latência no processamento de requisições e tipagem nativa com TypeScript.
-2. **Tratamento de Erros:** Implementação de lógica *fail-fast* no backend para validar coordenadas geográficas antes de processar chamadas de IA, economizando tokens e tempo de resposta.
-3. **Resiliência de Rede:** Configuração customizada de DNS no Docker para garantir estabilidade em ambientes Linux (Fedora/RHEL), resolvendo gargalos comuns de resolução de nomes em containers.
-4. **Normalização de Dados:** Mapeamento de esquemas proprietários (TomTom `lon` vs Leaflet `lng`) garantindo integridade na renderização do mapa.
+Code snippet
 
-
-
-## 🚀 Como Executar
-
-### Pré-requisitos
-- Docker & Docker Compose instalados.
-- Chaves de API (TomTom e Groq).
-
-### Instalação
-1. Clone o repositório:
-   ```bash
-   git clone [https://github.com/seu-usuario/localvibe-ai.git](https://github.com/seu-usuario/localvibe-ai.git)
-Configure o arquivo .env na pasta /backend:
-
-Snippet de código
-
-TOMTOM_API_KEY=sua_chave_aqui
-GROQ_API_KEY=sua_chave_aqui
-Inicie os containers:
+TOMTOM_API_KEY=your_key_here GROQ_API_KEY=your_key_here Start the containers:
 
 Bash
 
-docker compose up --build
-Acesse o frontend em http://localhost:5173.
+docker compose up --build Access the frontend at http://localhost:5173.
 
-Desenvolvido por Thaynara - Systems Development Graduate.
+Developed by Thaynara - Systems Development Graduate.
 
 
 ---
